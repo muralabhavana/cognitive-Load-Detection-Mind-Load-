@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindLoad | AI Cognitive Load Monitoring</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/home.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/6f4bb9bdb6.js"
+            crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+    <!-- Background -->
+
+    <img src="{{ url_for('static', filename='images/hero.png.jpeg') }}"
+         class="bg-image"
+         alt="MindLoad Hero">
+
+    <div class="overlay"></div>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+
+            <i class="fas fa-brain"></i>
+
+            <span>MindLoad</span>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <div class="hero-content">
+
+        <h1>
+
+            <span id="dynamic"></span>
+
+            <br>
+
+            Cognitive Load
+
+            <br>
+
+            Monitoring
+
+        </h1>
+
+        <p>
+
+            Real-time analysis of facial expressions and study behaviour to help you understand your mind and study smarter.
+           
+        </p>
+
+        <div class="tagline">
+
+            <i class="fas fa-check-circle"></i>
+
+            Understand. Adapt. Improve.
+
+        </div>
+
+        <!-- KEEP THIS LINK -->
+
+        <a href="/dashboard"
+           class="start-btn">
+
+            Start Monitoring
+
+        </a>
+
+    </div>
+
+    
+
+</div>
+
+<!-- Keep JS -->
+
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+
+</body>
+
+</html>

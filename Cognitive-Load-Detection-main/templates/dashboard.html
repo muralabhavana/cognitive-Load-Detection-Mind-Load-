@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MindLoad Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<div class="logo">
+
+<h1>Mind<span>Load</span></h1>
+<p class="subtitle">
+AI Cognitive Load Monitoring
+</p>
+
+<div id="sessionTimer" class="session-timer">
+00:00:00
+</div>
+
+</div>
+
+<div class="top-right">
+
+<div id="status"
+class="status low">
+
+LOW LOAD
+
+</div>
+
+<button id="endBtn">
+
+End Session
+
+</button>
+
+</div>
+
+</header>
+
+<!-- ================= TOP ================= -->
+
+<section class="top-grid">
+
+<!-- CAMERA -->
+
+<div class="card camera">
+
+<h2>📷 Live Camera</h2>
+
+<img
+id="videoFeed"
+src="{{ url_for('video') }}">
+
+</div>
+
+<!-- GAUGE -->
+
+<div class="card gauge">
+
+<h2>Cognitive Load</h2>
+
+<div class="gauge-wrapper">
+
+<canvas
+id="gaugeCanvas"
+width="420"
+height="250">
+</canvas>
+
+<div class="gauge-center">
+
+<h1 id="loadValue">0</h1>
+
+<p id="loadLabel">LOW</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- METRICS -->
+
+<div class="card metrics">
+
+<h2>Facial Metrics</h2>
+
+<div class="metric">
+
+<span>Eye Aspect Ratio</span>
+
+<h3 id="earValue">0.00</h3>
+
+</div>
+
+<div class="metric">
+
+<span>Mouth Aspect Ratio</span>
+
+<h3 id="marValue">0.00</h3>
+
+</div>
+
+<div class="metric">
+
+<span>Blinks</span>
+
+<h3 id="blinkCount">0</h3>
+
+</div>
+
+<div class="metric">
+
+<span>Yawns</span>
+
+<h3 id="yawnCount">0</h3>
+
+</div>
+
+<div class="metric">
+
+<span>Head Movement</span>
+
+<h3 id="headMovement">Stable</h3>
+
+</div>
+
+
+</div>
+
+</section>
+
+<!-- ================= GRAPH ================= -->
+
+<section class="graph">
+
+<div class="card">
+
+<h2>Study Session Timeline</h2>
+
+<div class="chart-container">
+
+<canvas id="studyChart"></canvas>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= BOTTOM ================= -->
+
+<section class="bottom-grid">
+
+<!-- Interaction -->
+
+<div class="card">
+
+<h2>Interaction Metrics</h2>
+
+<div class="stats">
+
+<div>
+
+<h1 id="typingSpeed">0</h1>
+
+<p>Typing Speed</p>
+
+</div>
+
+<div>
+
+<h1 id="mouseSpeed">0</h1>
+
+<p>Mouse Speed</p>
+
+</div>
+
+<div>
+
+<h1 id="keyboardIdle">0</h1>
+
+<p>Keyboard Idle</p>
+
+</div>
+
+<div>
+
+<h1 id="mouseIdle">0</h1>
+
+<p>Mouse Idle</p>
+
+</div>
+
+<div>
+
+<h1 id="mouseClicks">0</h1>
+
+<p>Mouse Clicks</p>
+
+</div>
+
+<div>
+
+<h1 id="studyTime">
+
+00:00:00
+
+</h1>
+
+<p>Study Time</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Recommendation -->
+
+<div class="card">
+
+<h2>Adaptive Recommendation</h2>
+
+<div id="recommendationContainer">
+
+<div class="recommendation-card">
+
+<h3>🟢 Ready</h3>
+
+<p>
+
+Monitoring your session...
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<dialog id="sessionSummaryDialog" class="session-summary-dialog">
+    <div>
+        <h2>Session Summary</h2>
+        <div id="sessionSummaryContent"></div>
+        <div class="session-summary-chart">
+            <canvas id="sessionSummaryChart"></canvas>
+        </div>
+        <div class="session-summary-actions">
+            <button id="downloadReportBtn" type="button">Download CSV</button>
+            <button id="startNewSessionBtn" type="button">Start New Session</button>
+            <button id="closeSummaryBtn" type="button">Close</button>
+        </div>
+    </div>
+</dialog>
+
+</div>
+
+<!-- ================= Scripts ================= -->
+
+<script src="{{ url_for('static', filename='js/gauge.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/metrics.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/recommendation.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/timer.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+</body>
+
+</html>
